@@ -1,4 +1,4 @@
 #!/bin/bash
-version='1.0'
+version='1.0.1'
 tar -cf torque-tools-${version}.tar README.txt bin/torque* man/man1/torque*
 gzip -9 torque-tools-${version}.tar

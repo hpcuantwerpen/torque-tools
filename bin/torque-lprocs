@@ -35,7 +35,7 @@ EOF
 }
 
 if [ $# -eq 0 ]; then
-  qstat -f $PBS_JOBID | awk "/req_information.lprocs./ {print \$3}"
+  qstat -f $PBS_JOBID | awk "/req_information.task_usage..*.task.0.threads/ {print \$3}"
 elif [ $# -eq 1 ]; then
   case $1 in
   -h|-help|--help)
@@ -46,7 +46,7 @@ elif [ $# -eq 1 ]; then
     [[ $1 =~ ^[0-9]+$ ]] && { alloc=$1; } || { echoerr "Argument is not a positive number"; exit 1; }
     nr_task_groups=$(qstat -f $PBS_JOBID | grep "req_information.task_count" | wc -l)
     (( $alloc >= $nr_task_groups )) && exit 2
-    qstat -f $PBS_JOBID | awk "/req_information.lprocs.${alloc}/ {print \$3}"
+    qstat -f $PBS_JOBID | awk "/req_information.task_usage.${alloc}.task.0.threads/ {print \$3}"
     ;;
   esac
 else
