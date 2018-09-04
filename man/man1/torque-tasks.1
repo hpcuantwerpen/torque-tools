@@ -1,0 +1,32 @@
+.\" Written by Kurt Lust, kurt.lust@uantwerpen.be.
+.TH man 1 "19 February 2018" "1.0" "torque-tasks command"
+.SH NAME
+torque-tasks \- Prints the number of tasks in the current Torque job for each
+or a selected task group.
+.SH SYNOPSIS
+torque-tasks [TASKGROUPNUM]
+.SH DESCRIPTION
+torque-tasks prints the number of tasks in the current Torque job for each
+or a selected task group.
+It is part of the torque-tools package.
+.SH OPTIONS
+.IP \[bu] 2
+Without arguments: Prints the number of tasks for each task
+group (each -L argument). This is effectively the value of all 
+req_information.task_count lines reported also by qstat.
+.IP \[bu]
+With a single numeric argument n: Prints the number of tasks for the 
+nth task group, i.e., (n+1)st -L argument as Torque counts from 0.
+This is effectively the value also reported for req_information.task_count.n. 
+In case the argument is not a valid task group number, i.e., larger than or
+equal to the number of task groups, nothing is printed and the exit code
+is nonzero.
+.IP \[bu]
+torque-tasks -h or --help shows help information
+.SH SEE ALSO
+torque-tools(1), torque-lprocs(1), torque-hoststring(1), torque-host-per-line(1),
+torque-host-parallel(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Kurt Lust (Kurt.Lust@uantwerpen.be)

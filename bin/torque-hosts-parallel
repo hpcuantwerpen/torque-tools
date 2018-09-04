@@ -1,0 +1,40 @@
+#!/bin/env perl
+
+use strict;
+use warnings;
+
+my $mothersuperior;  # The mother superior is the host on which task 0 of taskgroup 0 runs
+my %hostcount;       # Hash with the counters for each host
+my @hostnames = ();  # Array for the hostnames, as we want to maintain the order
+                     # (so just using the keys of the hash does not cut it).
+
+open( my $fh, '-|', 'qstat -f $PBS_JOBID' ) or die "Cannot execute qstat.";
+
+while ( my $line = <$fh> ) {
+
+  # Trim white space / newline at the beginning and end.
+  $line =~ s/^\s+|\s+$//g;
+
+  if ( $line =~ /req_information.task_usage.0.task.0.host = / ) {
+    my ($label, $host) = split / = /, $line;
+    $mothersuperior = $host;
+    }
+
+  if ( $line =~ /req_information.task_usage.*host = / ) { 
+    my ($label, $host) = split / = /, $line;
+    # Adapt the counter
+    $hostcount{$host}++;
+    # If this is the first line for this hostname, add it to our hostnames list
+    if ( $hostcount{$host} == 1 ) { push @hostnames, $host; }
+    }
+
+}
+
+close( $fh );
+
+my @hoststrings = ();
+foreach my $host (@hostnames) {
+  if ( $host eq $mothersuperior ) { push @hoststrings, $hostcount{$host}.'/:'; }
+  else                            { push @hoststrings, $hostcount{$host}.'/'.$host; }
+}
+print join( ',', @hoststrings );
