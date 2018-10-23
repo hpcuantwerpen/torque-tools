@@ -1,11 +1,11 @@
 .\" Written by Kurt Lust, kurt.lust@uantwerpen.be.
-.TH man 1 "19 February 2018" "1.0" "torque-host-per-line command"
+.TH man 1 "16 October 2018" "1.0.2" "torque-host-per-line command"
 .SH NAME
-torque-hoststring \- Prints the host allocated to each task in the current Torque job for each or a selected task group, one host per line.
+torque-host-per-line \- Prints the host allocated to each task in the current Torque job for each or a selected task group, one host per line.
 .SH SYNOPSIS
 torque-host-per-line [TASKGROUPNUM]
 .SH DESCRIPTION
-torque-hoststring prints the host allocated to each task in the current Torque
+torque-host-per-line prints the host allocated to each task in the current Torque
 job for each or a selected task group, one host per line.
 The output is perfect for generating a machine file to pass to mpirun with 
 the -machinefile argument, which is very useful to start a hybrid MPI program.
