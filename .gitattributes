@@ -1,0 +1,5 @@
+# Exclude git files and other files starting with .
+.* export-ignore
+# Exclude work files used during development
+workfiles export-ignore
+
