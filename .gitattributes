@@ -2,4 +2,5 @@
 .* export-ignore
 # Exclude work files used during development
 workfiles export-ignore
+easybuild export-ignore
 

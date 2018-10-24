@@ -10,3 +10,10 @@ to this toolset.
 
 All tools are documented through manual pages. The page torque-tools(1)
 lists all tools and is the ideal starting point.
+
+On the GitHub pages of this project,
+https://github.com/hpcuantwerpen/torque-tools,
+a sample EasyBuild config file is available. As this it currently uses
+the Tarball EasyBlock, we have not included it in the distribution files
+as otherwise it would be copied to the install directories. This also keeps
+things clean for non-EasyBuild users.
