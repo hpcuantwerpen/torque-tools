@@ -3,4 +3,5 @@
 # Exclude work files used during development
 workfiles export-ignore
 easybuild export-ignore
-
+docs      export-ignore
+Makefile  export-ignore
