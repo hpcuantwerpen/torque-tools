@@ -1,7 +1,6 @@
 [GitHub site: https://github.com/hpcuantwerpen/torque-tools](https://github.com/hpcuantwerpen/torque-tools)
 
-torque-tools
-============
+# torque-tools
 
 This directory contains a number of tools developed to make it easier to 
 start parallel jobs on the UAntwerp clusters using the version 2 aka
